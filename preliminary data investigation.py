@@ -60,6 +60,16 @@ filenames_stage = [filename for filename, stage in zip(filenames_diagnosis, tumo
 diagnosis_dict = {filename:stage for filename, stage in zip(filenames_stage, filtered_stages)}
 
 # save diagnosis dict
-with (Path.cwd()/'data'/'diagnosis_dict.pickle').open(mode='wb') as f:
-    pickle.dump(diagnosis_dict, f)
+# with (Path.cwd()/'data'/'diagnosis_dict.pickle').open(mode='wb') as f:
+#     pickle.dump(diagnosis_dict, f)
 print('d0ne!')
+
+# visualize:
+import matplotlib.pyplot as plt
+plt.style.use('classic')
+plt.style.use('fivethirtyeight')
+# swap #1 with #2 for stages to be ordered i to iv:
+temp1 = filtered_stages[0]; temp2 = filtered_stages[1]
+filtered_stages[0] = temp2; filtered_stages[1] = temp1
+plt.hist(filtered_stages)
+
